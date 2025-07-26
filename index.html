@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIP WhatsApp Banned Tool</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      background: url('https://i.postimg.cc/sxMJfbc5/whatsapp-ban-logo.png') repeat;
+      animation: scrollBg 30s linear infinite;
+    }
+
+    @keyframes scrollBg {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .container {
+      background: rgba(0,0,0,0.7);
+      padding: 40px;
+      margin-top: 80px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .big-emoji {
+      font-size: 80px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.5; }
+    }
+
+    .input-box, .btn {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .input-box {
+      background: #fff;
+      color: #000;
+      animation: glowInput 1.5s infinite alternate;
+      box-shadow: 0 0 5px #25D366;
+    }
+
+    @keyframes glowInput {
+      0% {
+        box-shadow: 0 0 5px #25D366;
+      }
+      100% {
+        box-shadow: 0 0 15px #25D366, 0 0 25px #25D366;
+      }
+    }
+
+    .btn {
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .ban-btn {
+      background: #111;
+      color: lime;
+      padding: 12px;
+      margin: 10px;
+      border: 2px solid lime;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .progress-bar {
+      height: 25px;
+      width: 0%;
+      background: lime;
+      margin-top: 20px;
+      border-radius: 5px;
+      transition: width 0.2s;
+    }
+
+    .final-link {
+      margin-top: 30px;
+      display: none;
+    }
+
+    a {
+      color: white;
+      background: #128C7E;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="mainForm">
+    <div class="big-emoji">📵</div>
+    <h2>VIP WhatsApp BANNED Tool</h2>
+    <p>Enter your number to unlock tool:</p>
+    <input type="text" id="yourNumber" class="input-box" placeholder="Your WhatsApp Number (e.g. +92...)" />
+    <input type="text" id="targetNumber" class="input-box" placeholder="Number You Want to Ban" />
+    <button class="btn" onclick="showOptions()">Next ➤</button>
+  </div>
+
+  <div class="container hidden" id="banOptions">
+    <h3>Select Ban Method</h3>
+    <button class="ban-btn" onclick="startBan('Just a Prank 😂')">🔘 Just a Prank</button>
+    <button class="ban-btn" onclick="startBan('Simple Ban 🛑')">🛑 Simple Ban</button>
+    <button class="ban-btn" onclick="startBan('Hard Ban 🚫')">🚫 Hard Ban</button>
+    <button class="ban-btn" onclick="startBan('Ban with Spam 📛')">📛 Spam Ban</button>
+  </div>
+
+  <div class="container hidden" id="loadingBox">
+    <p><b>Sending ban request to server...</b></p>
+    <div style="background:#333;width:90%;margin:auto;border-radius:8px;">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <div class="container final-link" id="finalMsg">
+    <p>✅ Ban request ready. Click below to send:</p>
+    <a id="sendLink" target="_blank">📤 Send to WhatsApp Admin</a>
+  </div>
+
+  <script>
+    let targetNumber = "";
+
+    function showOptions() {
+      const your = document.getElementById('yourNumber').value.trim();
+      targetNumber = document.getElementById('targetNumber').value.trim();
+
+      if (!your || !targetNumber) {
+        alert("Please enter both numbers!");
+        return;
+      }
+
+      document.getElementById('mainForm').classList.add("hidden");
+      document.getElementById('banOptions').classList.remove("hidden");
+    }
+
+    function startBan(type) {
+      document.getElementById('banOptions').classList.add("hidden");
+      document.getElementById('loadingBox').classList.remove("hidden");
+
+      let width = 0;
+      const bar = document.getElementById('progressBar');
+      const totalTime = 240000; // 4 minutes
+      const intervalTime = totalTime / 100;
+
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          document.getElementById('loadingBox').classList.add("hidden");
+          document.getElementById('finalMsg').style.display = 'block';
+
+          const msg = encodeURIComponent("🔥 VIP Ban Request:\nTarget: " + targetNumber + "\nType: " + type);
+          document.getElementById('sendLink').href = "https://wa.me/265883432874?text=" + msg;
+
+        } else {
+          width += 1;
+          bar.style.width = width + "%";
+        }
+      }, intervalTime);
+    }
+  </script>
+
+</body>
+</html>
